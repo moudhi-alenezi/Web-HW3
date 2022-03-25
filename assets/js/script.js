@@ -78,12 +78,19 @@ function addItemToCart(title, price, imageSrc) {
         <span class="cart-price cart-column">${price}</span>
         <div class="cart-quantity cart-column">
             <input class="cart-quantity-input" type="number" value="1">
-            <button class="btn btn-danger" type="button">REMOVE</button>
+            <button id="lowCount" class="btn btn-danger" onclick="cartCountLow()" type="button">REMOVE</button>
         </div>`
     cartRow.innerHTML = cartRowContents
     cartItems.append(cartRow)
     cartRow.getElementsByClassName('btn-danger')[0].addEventListener('click', removeCartItem)
     cartRow.getElementsByClassName('cart-quantity-input')[0].addEventListener('change', quantityChanged)
+    
+}
+function cartCountLow() {
+    let count = document.getElementById('count');
+    let value = count.innerHTML;
+    --value;
+    document.getElementById('count').innerHTML = value;
 }
 
 function updateCartTotal() {
@@ -110,10 +117,11 @@ document.getElementsByClassName("abouut")[0].addEventListener("click", function(
 });
 
 
-// let i = 0;
-// function cartCount() {
-    
-//     document.getElementById('count').innerHTML.value = ++i;
-// }
-// cartCount();
+
+function cartCount() {
+    let count = document.getElementById('count');
+    let value = count.innerHTML;
+    ++value;
+    document.getElementById('count').innerHTML = value;
+}
 
